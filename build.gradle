@@ -1,0 +1,27 @@
+plugins {
+    id "nebula.ospackage" version "4.10.0"
+}
+
+version = "1.0"
+description = "Die Konfiguration zum Teilen der Internetverbindung"
+
+// The distribution package
+task distDeb(type: Deb) {
+    group = "distribution"
+
+    packageName = "t-ag-router-config"
+    maintainer = "Technik-AG"
+    release = "1"
+
+    // Required packages
+    requires("network-manager")
+
+    // Copy the connection settings
+    from("./src/t-ag-shared") {
+        into("/etc/NetworkManager/system-connections")
+
+        // NetworkManager only accepts files with secure permissions
+        fileMode 0600
+    }
+}
+assemble.dependsOn(distDeb)

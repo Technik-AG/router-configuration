@@ -1,0 +1,7 @@
+[connection]
+id=Technik-AG shared ethernet
+autoconnect-priority=1
+type=ethernet
+
+[ipv4]
+method=shared
