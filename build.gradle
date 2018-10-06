@@ -16,6 +16,10 @@ task distDeb(type: Deb) {
     // Required packages
     requires("network-manager")
 
+    // Required by NetworkManager for connection sharing
+    requires("dnsmasq-base")
+    requires("iptables")
+
     // Copy the connection settings
     from("./src/t-ag-shared") {
         into("/etc/NetworkManager/system-connections")
