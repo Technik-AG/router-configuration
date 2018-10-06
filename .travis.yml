@@ -1,0 +1,28 @@
+language: java
+
+install: true
+script: ./gradlew build 
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+deploy:
+  provider: releases
+  api_key:
+    secure: B+Xy7P67QZ52K994n2CkOH4Dl3USdse0gesS9BoObmdpOljrbhZrF/f0UBmIvZxNFqgwgiAeQMjRVLK1BFAogKJFSHqsn/OmNWMMDtJm/xb6/NUeC2Eoa8RGcXF2xgzuWI2La07iHMbsGnzxSwWf5OqZTtNtUGKJgkRkI0CJxjwrLJ34V3/rExnUluj6Ajhh5oWdyELjTHoKifpBAblxIAahGH83ZttHXx2INgxMzvfIwQOfa/MUAGvf3XROMTkDcFn8ISzK4f/VIDyAcM86DldttSGHKmufea543ksDg846iPFvU5WzG0eGxwzXfyNSsEZw+DA130Tamm6tUWOkIZ18iETQ8Jrz6dkLw9s9nbYRjiYO6zn2RhQ8tuIj3S/qSEl4AEmvLaoKOnZxbbe+JwCy/WCNgIh4ZZbZVEUc64h2P7nmK3fcqRib3d93WXbhH9iHsDGjq03sM3mKi/5szpt/P5ApqfYl/GV5tdg1u7QDsMG28gDyYKwPeMcXFbRMMWo5aTfQwcFsBWTAcLZp2mLM7y+bV28uNilimWgWJORz3l28BNtdAc8NikyZBEjeciy1zRZOy787MErNg1hM3veEKp8n5me5tfQB5ZPl1bOZ5/7K84eLiMRbZpl5B4iDLdtLD7Er/FyFF03nGt3UQBZEJ91e2/OuKGAOFEp3CXE=
+  file_glob: true
+  file: build/distributions/*.deb
+  draft: true
+  on:
+    repo: Technik-AG/router-configuration
+    branch: master
+    tags: true
+
+notifications:
+  slack:
+    secure: TIau91h//3d+nF725HwclgsgJFgPXRgMcOCjhRws0SuU4Wejo6HTKtdzaS2OFzFsy4VUvidim9qrOOqOI7iwCmFKCAMRaDDDafkn+VDnKB9jDTpF5k2EcMeyrlczDWdgbecnOhpHaMRiePA8Zv6ida4duRxHWjq14U5ofVahwXfF5a5x03Z90mprbsLc/uCIkIJFnsBlJbJG2ao9uqspmdNWCTLc/EA0T0NN7iLISv7ICj391xJfobiExuKB708rDdSoi3edYrepocWvmR2Nbf29P4025Xv1VPyLpdTy/SlK+Zo7RRShxU0wX5Zb2tM8j34InAoN2qfz+aALSOBYMDjg25Z8v0/2O8GlctFuLN1gFIyxmYjvjF2av2eD+C58EsV0PuBEGpXdeeKdf2rezDj5xKdugdClUx9wUTQpo/9QpalFJuUfG/r6Lev2DyFPgd9Jc5DfYKskS0ObiRYgCGqhAPnQY7CHj9yxQP3XOgDfLfbZpM/kfy9fpAbp4YGHTdNj1tBKUks2DpbZ3Wx0kpBS0ELi25qVyq+pg30a5TwsWxSn2gmC5F0z3JW2jyqagVfuIwszqaOhvIRrOWplvfpx43rNRFp+vFMhpRjbouK1r94SL1dpDlzKLMECmNcwutPM/ZjC37Tv0DikDuXP5WTsla5UBeZGPLDVetXl0G0=
