@@ -1,11 +1,14 @@
 # Routerkonfiguration
 
+[![Build Status](https://travis-ci.com/Technik-AG/router-configuration.svg?branch=master)](https://travis-ci.com/Technik-AG/router-configuration)
+
 Dieses paket enthält alle notwendigen Konfigurationsdateien, um auf dem Ethernet-Port eine Internetfreigabe einzurichten.
 
 ## Funktionsweise
 
 Es wird mithilfe von NetworkManager eine Verbindung auf dem Ethernet-Port namens `Technik-AG shared ethernet` erstellt.
 NetworkManager richtet dadurch folgendes automatisch ein:
+
 * Weiterleitung der Pakete vom Ethernet-Port auf die aktive Internet-Schnittstelle
 * NAT auf der Internet-Schnittstelle
 * Einen DHCP- und DNS-Server auf dem Ethernet-Port mithilfe von `dnsmasq-base`
@@ -20,7 +23,8 @@ Beispiele für mögliche Konfigurationsoptionen können in [`dnsmasq.conf.exampl
 ## Erstellen des Pakets
 
 Folgendes Kommando erstellt das Paket im Ordner `build/distributions`:
-```
+
+```shell
 ./gradlew build
 ```
 
