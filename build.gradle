@@ -27,5 +27,10 @@ task distDeb(type: Deb) {
         // NetworkManager only accepts files with secure permissions
         fileMode 0600
     }
+
+    // Configuration for the router's name
+    from("./src/router-hostname.conf") {
+        into("/etc/NetworkManager/dnsmasq-shared.d")
+    }
 }
 assemble.dependsOn(distDeb)
